@@ -32,10 +32,10 @@ export default {
     padding: 7px 0;
     text-decoration: none;
     color: #666;
-    width: 32%;
   }
   .navbar a.router-link-active {
     background-color: #eaeaea;
     color: #26a2ff;
   }
+
 </style>
