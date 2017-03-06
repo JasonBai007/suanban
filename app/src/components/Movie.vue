@@ -1,6 +1,6 @@
 <template>
   <div class="movie">
-  <div class="loading" v-show="isLoading">加载中</div>
+    <loading :isOpen="isOpen"></loading>
     <header>{{title}} 共 {{total}} 部 </header>
     <div class="m-wrap">
       <div v-for="m in arr">
@@ -17,11 +17,12 @@
 </template>
 
 <script>
+import loading from './Loading'
 export default {
   name: 'movie',
   data () {
     return {
-      isLoading: true,
+      isOpen: true,
       title:'热映影片',
       total:0,
       arr:[]
@@ -30,13 +31,14 @@ export default {
   mounted() {
     this.loadData();
   },
+  components: {loading},
   methods: {
     loadData() {
       this.$http.jsonp(
         'https://api.douban.com/v2/movie/in_theaters',
         {city:108288}
       ).then(function (res) {
-        this.isLoading = false;
+        this.isOpen = false;
         let data = res.body;
         this.title = data.title;
         this.arr = this.handleData( data.subjects );
@@ -57,14 +59,6 @@ export default {
 </script>
 
 <style scoped>
-.loading {
-  position: absolute;
-  top:0;
-  bottom: 20px;
-  left:0;
-  right:0;
-  background: #aaa;
-}
 .m-wrap {
   margin-top: 2rem;
 }

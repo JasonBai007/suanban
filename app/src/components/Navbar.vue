@@ -26,12 +26,19 @@ export default {
     left: 0;
     z-index: 1;
     width:100%;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
   }
   .navbar a {
     display: inline-block;
     padding: 7px 0;
     text-decoration: none;
     color: #666;
+    width: 34%;
+    background: #fff;
+    text-align: center;
   }
   .navbar a.router-link-active {
     background-color: #eaeaea;
