@@ -5,10 +5,10 @@
     <div class="m-wrap">
       <div v-for="m in arr">
         <a :href="m.alt">
-          <img :src="m.images.small" alt="">
+          <img :src="m.images.medium" alt="">
           <div class="right">
-            <span class="m-title">{{m.title}}</span>
-            <span class="m-star">{{m.rating.average}}</span>
+            <h3 class="m-title">{{m.title}}</h3>
+            <span :class="{'high' : m.rating.average >= 8, 'low':m.rating.average <= 6}">{{m.rating.average}}</span>
           </div>
         </a>
       </div>
@@ -47,7 +47,7 @@ export default {
     handleData(data) {
       var filterArr = [];
       data.forEach(function(v,i) {
-        if( v.rating.average > 6 ) {
+        if( v.rating.average > 5 ) {
           filterArr.push(v)
         }
       })
@@ -59,16 +59,37 @@ export default {
 </script>
 
 <style scoped>
+header {
+  text-align: center;
+  padding: 1rem 0;
+  background: #324057;
+  color: #fff;
+}
 .m-wrap {
-  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 .m-wrap div a {
   display: block;
   overflow: hidden;
-  margin-bottom: 1rem;
+  padding: 1rem 1rem 1rem 0;
+  text-decoration: none;
+  border-bottom: 1px solid #e4e4e4;
 }
 .m-wrap div a img {
   display: inline-block;
   float: left;
+  margin:0 2rem;
+}
+.m-wrap div .right {
+  color: #666;
+}
+.high {
+  color:#FF4949;
+}
+.low {
+  color: #13CE66;
+}
+.right span {
+  font-size: 1.4rem;
 }
 </style>
