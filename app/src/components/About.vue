@@ -27,10 +27,14 @@ export default {
   letter-spacing: 0.5rem;
 }
 .about h1 {
-  margin-top: 10rem;
+  margin-top: 8rem;
+}
+.about h2 {
+  margin: 0.5rem 0;
 }
 .about i {
   font-size: 4rem;
   color: #1ABC9C;
+  margin-top: 2rem;
 }
 </style>

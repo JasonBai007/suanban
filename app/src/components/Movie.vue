@@ -1,7 +1,13 @@
 <template>
   <div class="movie">
     <loading :isOpen="isOpen"></loading>
-    <header>{{title}} 共 {{total}} 部 </header>
+    <header>
+      正在上映的电影 -
+      <select v-model="selected" @change="changeCity">
+        <option v-for="city in cityList" :value="city.id">{{city.name}}</option>
+      </select>
+      共 {{total}} 部
+    </header>
     <div class="m-wrap">
       <div v-for="m in arr">
         <a :href="m.alt">
@@ -20,27 +26,34 @@
 import loading from './Loading'
 export default {
   name: 'movie',
+  components: {loading},
   data () {
     return {
       isOpen: true,
-      title:'热映影片',
       total:0,
-      arr:[]
+      arr:[],
+      cityList:[],
+      selected:108288
     }
   },
   mounted() {
-    this.loadData();
+    this.loadCityList();
+    this.loadData(this.selected);
   },
-  components: {loading},
   methods: {
-    loadData() {
+    loadCityList() {
+      this.$http.jsonp('https://api.douban.com/v2/loc/list').then(function(res) {
+        this.cityList = res.body.locs;
+      })
+    },
+    loadData(cityId) {
+      this.isOpen = true;
       this.$http.jsonp(
         'https://api.douban.com/v2/movie/in_theaters',
-        {city:108288}
+        {params:{city:cityId}}
       ).then(function (res) {
         this.isOpen = false;
         let data = res.body;
-        this.title = data.title;
         this.arr = this.handleData( data.subjects );
       })
     },
@@ -53,6 +66,9 @@ export default {
       })
       this.total = filterArr.length;
       return filterArr;
+    },
+    changeCity() {
+      this.loadData(this.selected);
     }
   }
 }
@@ -64,9 +80,22 @@ header {
   padding: 1rem 0;
   background: #34495E;
   color: #fff;
+  letter-spacing: 2px;
+}
+select {
+  appearance:none;
+  -webkit-appearance:none;
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color:transparent;
+  outline:none；
 }
 .m-wrap {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 .m-wrap div a {
   display: block;
