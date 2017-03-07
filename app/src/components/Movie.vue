@@ -62,7 +62,7 @@ export default {
 header {
   text-align: center;
   padding: 1rem 0;
-  background: #324057;
+  background: #34495E;
   color: #fff;
 }
 .m-wrap {
@@ -73,7 +73,8 @@ header {
   overflow: hidden;
   padding: 1rem 1rem 1rem 0;
   text-decoration: none;
-  border-bottom: 1px solid #e4e4e4;
+  border-bottom: 1px solid #BDC3C7;
+  background: #ECF0F1;
 }
 .m-wrap div a img {
   display: inline-block;
@@ -81,7 +82,7 @@ header {
   margin:0 2rem;
 }
 .m-wrap div .right {
-  color: #666;
+  color: #2C3E50;
 }
 .high {
   color:#FF4949;

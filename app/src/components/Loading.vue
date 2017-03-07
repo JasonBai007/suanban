@@ -31,7 +31,7 @@ export default {
 .spinner {
   width: 3rem;
   height: 3rem;
-  background-color: #67CF22;
+  background-color: #1ABC9C;
   -webkit-animation: rotateplane 1.2s infinite ease-in-out;
   animation: rotateplane 1.2s infinite ease-in-out;
 }

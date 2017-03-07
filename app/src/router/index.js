@@ -9,6 +9,10 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/',
+      redirect: '/movie'
+    },
+    {
       path: '/movie',
       name: 'Movie',
       component: Movie

@@ -33,16 +33,17 @@ export default {
   }
   .navbar a {
     display: inline-block;
-    padding: 7px 0;
+    padding: 1rem 0;
     text-decoration: none;
-    color: #666;
+    color: #fff;
     width: 34%;
-    background: #fff;
+    background: #34495E;
     text-align: center;
+    letter-spacing: 3px;
   }
   .navbar a.router-link-active {
-    background-color: #eaeaea;
-    color: #26a2ff;
+    background-color: #2C3E50;
+    color: #fff;
   }
 
 </style>
