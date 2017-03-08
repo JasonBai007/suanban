@@ -6,7 +6,7 @@
       <select v-model="selected" @change="changeCity">
         <option v-for="city in cityList" :value="city.id">{{city.name}}</option>
       </select>
-      共 {{total}} 部
+      共{{total}}部
     </header>
     <div class="m-wrap">
       <div v-for="m in arr">
@@ -82,10 +82,10 @@ export default {
 <style scoped>
 header {
   text-align: center;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   background: #34495E;
   color: #fff;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 select {
   appearance:none;
