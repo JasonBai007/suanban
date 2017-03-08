@@ -29,7 +29,7 @@
         <option value="free">免费</option>
         <option value="all">全部</option>
       </select>&nbsp;&nbsp;
-      共{{total}}个
+      共 {{total}} 个
     </header>
     <div class="m-wrap">
       <div v-for="event in arr">
@@ -131,12 +131,17 @@ export default {
 </script>
 
 <style scoped>
+.event {
+  overflow: hidden;
+}
 header {
   text-align: center;
-  padding: 0.5rem 0;
+  padding: 1rem 0;
   background: #34495E;
   color: #fff;
   letter-spacing: 1px;
+  position: fixed;
+  width: 100%;
 }
 select {
   appearance:none;
@@ -154,7 +159,7 @@ h5 {
   margin:0;
 }
 .m-wrap {
-  margin-bottom: 3rem;
+  margin: 3.3rem 0;
 }
 .m-wrap div a {
   display: block;
@@ -183,12 +188,14 @@ h5 {
   color: #13CE66;
 }
 .right .rt {
-  font-size: 0.5rem;
+  font-size: 0.9rem;
 }
 .m-title {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 600;
   word-break: break-all;
+  margin-bottom: 0.4rem;
+  display: inline-block;
 }
 .free-event {
   color:#1ABC9C;

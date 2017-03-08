@@ -80,12 +80,17 @@ export default {
 </script>
 
 <style scoped>
+.movie {
+  overflow: hidden;
+}
 header {
   text-align: center;
-  padding: 0.5rem 0;
+  padding: 1rem 0;
   background: #34495E;
   color: #fff;
   letter-spacing: 1px;
+  position: fixed;
+  width:100%;
 }
 select {
   appearance:none;
@@ -100,7 +105,7 @@ select {
   outline:none；
 }
 .m-wrap {
-  margin-bottom: 3rem;
+  margin: 3.3rem 0;
 }
 .m-wrap div a {
   display: block;
