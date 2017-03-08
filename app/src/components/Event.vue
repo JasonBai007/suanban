@@ -1,6 +1,6 @@
 <template>
   <div class="event">
-    event
+    发芽中......
   </div>
 </template>
 
@@ -18,5 +18,6 @@ export default {
 <style scoped>
 .event {
   text-align: center;
+  margin-top: 8rem;
 }
 </style>

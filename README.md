@@ -1,6 +1,6 @@
 # Suanban
 
-> A Vue.js project with douban api
+> A vue.js project with douban [api](https://developers.douban.com/wiki/?title=api_v2)
 
 ## Build Setup
 
