@@ -18,12 +18,12 @@ export default {
 
 <style scoped>
 .loading {
-  position: absolute;
+  position: fixed;
   top:0;
   bottom: 0;
   left:0;
   right:0;
-  background: transparent;
+  background: rgba(255,255,255,0.5);
   display: flex;
   justify-content: center;
   align-items:center;
@@ -32,6 +32,7 @@ export default {
   width: 3rem;
   height: 3rem;
   background-color: #1ABC9C;
+  opacity: 1;
   -webkit-animation: rotateplane 1.2s infinite ease-in-out;
   animation: rotateplane 1.2s infinite ease-in-out;
 }

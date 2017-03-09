@@ -1,6 +1,6 @@
 <template>
   <div class="movie">
-    <!-- <loading :isOpen="isOpen"></loading> -->
+    <loading :isOpen="isOpen"></loading>
     <header>
       正在上映的5分以上的电影 -
       <select v-model="selected" @change="changeCity">

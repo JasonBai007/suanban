@@ -40,6 +40,7 @@ export default {
     background: #34495E;
     text-align: center;
     letter-spacing: 3px;
+    border-right: 1px solid #aaa;
   }
   .navbar a.router-link-active {
     background-color: #2C3E50;
