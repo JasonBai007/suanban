@@ -1,6 +1,6 @@
 <template>
   <div class="movie">
-    <loading :isOpen="isOpen"></loading>
+    <!-- <loading :isOpen="isOpen"></loading> -->
     <header>
       正在上映的5分以上的电影 -
       <select v-model="selected" @change="changeCity">
@@ -33,7 +33,7 @@ export default {
       total:0,
       arr:[],
       cityList:[],
-      selected:108288
+      selected:localStorage.city || 108288
     }
   },
   mounted() {
@@ -64,16 +64,18 @@ export default {
     },
     handleData(data) {
       var filterArr = [];
-      data.forEach(function(v,i) {
-        if( v.rating.average > 5 ) {
-          filterArr.push(v)
-        }
+      filterArr = data.filter(function(v,i,arr) {
+        return v.rating.average > 5
+      })
+      filterArr.sort(function(a,b) {
+        return b.rating.average - a.rating.average
       })
       this.total = filterArr.length;
       return filterArr;
     },
     changeCity() {
       this.loadData(this.selected);
+      localStorage.city = this.selected;
     }
   }
 }
