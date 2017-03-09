@@ -42,6 +42,9 @@ export default {
     letter-spacing: 3px;
     border-right: 1px solid #aaa;
   }
+  .navbar a:last-child {
+    border-right: none;
+  }
   .navbar a.router-link-active {
     background-color: #2C3E50;
     color: #fff;
