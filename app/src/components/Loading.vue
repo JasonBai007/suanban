@@ -1,5 +1,5 @@
 <template>
-  <div class="loading" v-show="isOpen">
+  <div class="loading"  v-show="isOpen">
     <div class="spinner"></div>
   </div>
 </template>
@@ -20,10 +20,10 @@ export default {
 .loading {
   position: absolute;
   top:0;
-  bottom: 35px;
+  bottom: 0;
   left:0;
   right:0;
-  background: #fff;
+  background: transparent;
   display: flex;
   justify-content: center;
   align-items:center;
