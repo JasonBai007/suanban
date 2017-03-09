@@ -25,7 +25,7 @@
         <option value="travel">旅行</option>
         <option value="others">其它</option>
       </select>&nbsp;&nbsp;
-      <select v-model="selFee" @change="changeFree">
+      <select v-model="selFree" @change="changeFree">
         <option value="free">免费</option>
         <option value="all">全部</option>
       </select>&nbsp;&nbsp;
@@ -42,7 +42,7 @@
             <span class="rt"><strong>开始：</strong>{{event.begin_time}}</span><br/>
             <span class="rt"><strong>结束：</strong>{{event.end_time}}</span><br/>
             <span class="rt"><strong>地点：</strong>{{event.address}}</span><br/>
-            <span class="rt"><strong>费用：</strong><span  :class="{'free-event': selFee === 'all' && event.fee_str === '免费'}">{{event.fee_str}}</span>
+            <span class="rt"><strong>费用：</strong><span  :class="{'free-event': selFree === 'all' && event.fee_str === '免费'}">{{event.fee_str}}</span>
             </span><br/>
             <span class="rt"><strong>参加：</strong>{{event.participant_count}}人</span>
           </div>
@@ -63,10 +63,10 @@ export default {
       total:0,
       arr:[],
       cityList:[],
-      selected:localStorage.city || 108288,
-      selDate: localStorage.dateType || 'week',
-      selType: localStorage.typeType || 'all',
-      selFee: localStorage.feeType || 'free'
+      selected:108288,
+      selDate: 'week',
+      selType: 'all',
+      selFree: 'free'
     }
   },
   mounted() {
@@ -93,20 +93,22 @@ export default {
         }
       ).then(function (res) {
         let data = res.body;
-        this.arr = this.handleData( data.events,this.selFee );
+        this.arr = this.handleData( data.events,this.selFree );
         this.total = this.arr.length;
         this.isOpen = false;
       })
     },
-    handleData(data,isFee) {
-      if (isFee === 'free') {
+    handleData(data,isFree) {
+      if (isFree === 'free') {
         var filterData = [];
-        filterData = data.filter(function(v,i,arr) {
-          return v.fee_str === '免费'
+        data.forEach(function(v,i) {
+          if (v.fee_str === '免费') {
+            filterData.push(v);
+          }
         })
-        filterData.sort(function(a,b) {
-          return b.participant_count - a.participant_count;
-        })
+        // filterData.sort(function(a,b) {
+        //   return a.participant_count > b.participant_count;
+        // })
         return filterData;
       } else {
         return data;
@@ -114,19 +116,15 @@ export default {
     },
     changeCity() {
       this.loadData(this.selected,this.selDate,this.selType);
-      localStorage.city = this.selected;
     },
     changeDate() {
       this.loadData(this.selected,this.selDate,this.selType);
-      localStorage.dateType = this.selDate;
     },
     changeType() {
       this.loadData(this.selected,this.selDate,this.selType);
-      localStorage.typeType = this.selType;
     },
     changeFree() {
       this.loadData(this.selected,this.selDate,this.selType);
-      localStorage.feeType = this.selFee;
     }
   }
 }
