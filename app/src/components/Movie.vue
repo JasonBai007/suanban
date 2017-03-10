@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     loadCityList() {
-      this.$http.jsonp('https://api.douban.com/v2/loc/list',{params:{count:47}}).then(function(res) {
+      this.$http.jsonp('https://api.douban.com/v2/loc/list',{params:{count:60}}).then(function(res) {
         this.cityList = res.body.locs;
       })
     },

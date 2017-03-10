@@ -2,11 +2,12 @@
 
 > A vue.js project with douban [api](https://developers.douban.com/wiki/?title=api_v2)
 
+## QR Code
+![image](http://note.youdao.com/favicon.ico)
 ## Build Setup
 
 ``` bash
-
-# goin to the app folder
+# go into app folder
 cd app
 
 # install dependencies
@@ -22,4 +23,18 @@ npm run build
 npm run build --report
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/).
+## Tech Stack
+- Vue 2.0
+- Vue-router
+- Vue-resource
+- Vue-cli
+- ES6
+- LocalStorage
+- Animate.CSS
+- Font-awesome
+- Douban API
+
+## Notes
+1. 顶部是筛选条，可以筛选城市、活动类型、日期、是否免费
+2. 制作这款应用的初心是：在手机上可以筛选免费的同城活动
+3. 目前支持60个城市，活动最多60个

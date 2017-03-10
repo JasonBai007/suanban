@@ -40,7 +40,7 @@ export default {
     background: #34495E;
     text-align: center;
     letter-spacing: 3px;
-    border-right: 1px solid #aaa;
+    border-right: 1px solid #546769;
   }
   .navbar a:last-child {
     border-right: none;
