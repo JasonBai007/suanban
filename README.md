@@ -3,7 +3,7 @@
 > A vue.js project with douban [api](https://developers.douban.com/wiki/?title=api_v2)
 
 ## QR Code
-![image](http://note.youdao.com/favicon.ico)
+![screen](https://github.com/jasonBai007/suanban/raw/master/docs/qrcode.png)
 ## Build Setup
 
 ``` bash
