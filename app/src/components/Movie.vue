@@ -2,11 +2,14 @@
   <div class="movie">
     <loading :isOpen="isOpen"></loading>
     <header>
-      正在上映的5分以上的电影 -
       <select v-model="selected" @change="changeCity">
         <option v-for="city in cityList" :value="city.id">{{city.name}}</option>
       </select>
-      共{{total}}部
+      <select v-model="mType" @change="changeType">
+        <option value="in_theaters">正在上映</option>
+        <option value="coming_soon">即将上映</option>
+      </select>
+      &nbsp;&nbsp;共{{total}}部
     </header>
     <div class="m-wrap">
       <div v-for="m in arr">
@@ -14,7 +17,7 @@
           <img :src="m.images.medium" alt="">
           <div class="right">
             <h3 class="m-title">{{m.title}}</h3>
-            <span :class="{'high' : m.rating.average >= 8, 'low':m.rating.average <= 6}">{{m.rating.average}}</span>
+            <span :class="{'high' : m.rating.average >= 8, 'low':m.rating.average <= 6}">{{m.rating.average | handleNoStar}}</span>
           </div>
         </a>
       </div>
@@ -33,12 +36,13 @@ export default {
       total:0,
       arr:[],
       cityList:[],
-      selected:localStorage.city || 108288
+      selected:localStorage.city || 108288,
+      mType: localStorage.mType || 'in_theaters'
     }
   },
   mounted() {
     this.loadCityList();
-    this.loadData(this.selected);
+    this.loadData(this.selected, this.mType);
   },
   methods: {
     loadCityList() {
@@ -46,36 +50,50 @@ export default {
         this.cityList = res.body.locs;
       })
     },
-    loadData(cityId) {
+    loadData(cityId,type) {
       this.isOpen = true;
       this.$http.jsonp(
-        'https://api.douban.com/v2/movie/in_theaters',
+        'https://api.douban.com/v2/movie/' + type,
         {
           params:{
             city:cityId,
-            count:40
+            count:100
           }
         }
       ).then(function (res) {
         let data = res.body;
-        this.arr = this.handleData( data.subjects );
+        this.arr = this.handleData( data.subjects, type );
         this.isOpen = false;
       })
     },
-    handleData(data) {
+    handleData(data,type) {
       var filterArr = [];
-      filterArr = data.filter(function(v,i,arr) {
-        return v.rating.average > 5
-      })
-      filterArr.sort(function(a,b) {
-        return b.rating.average - a.rating.average
-      })
+      if (type === 'in_theaters') {
+        filterArr = data.sort(function(a,b) {
+          return b.rating.average - a.rating.average
+        })
+      } else {
+        filterArr = data;
+      }
       this.total = filterArr.length;
       return filterArr;
     },
     changeCity() {
-      this.loadData(this.selected);
+      this.loadData(this.selected, this.mType);
       localStorage.city = this.selected;
+    },
+    changeType() {
+      this.loadData(this.selected, this.mType);
+      localStorage.mType = this.mType;
+    }
+  },
+  filters: {
+    handleNoStar(v) {
+      if (v === 0) {
+        return '暂无评分'
+      } else {
+        return v
+      }
     }
   }
 }
