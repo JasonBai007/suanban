@@ -139,6 +139,7 @@ select {
   display: inline-block;
   float: left;
   margin:0 2rem;
+  width: 30%;
 }
 .m-wrap div .right {
   color: #2C3E50;

@@ -33,6 +33,7 @@ export default {
   height: 3rem;
   background-color: #1ABC9C;
   opacity: 1;
+  z-index: 10;
   -webkit-animation: rotateplane 1.2s infinite ease-in-out;
   animation: rotateplane 1.2s infinite ease-in-out;
 }
