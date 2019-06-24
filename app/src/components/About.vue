@@ -24,7 +24,7 @@ export default {
 .about {
   text-align: center;
   letter-spacing: 0.5rem;
-  margin-top: 30vh;
+  margin-top: 20vh;
 }
 .about h1 {
   margin-top: 8rem;

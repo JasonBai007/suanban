@@ -30,7 +30,7 @@ export default {
     display: flex;
     justify-content: space-around;
     flex-wrap: nowrap;
-    box-shadow: 0px 0px 10px #999;
+    box-shadow: 0px 0px 16px #666;
   }
   .navbar a {
     padding: 1rem 0;

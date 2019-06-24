@@ -24,7 +24,7 @@ body {
 }
 header {
   padding: 1rem 0;
-  box-shadow: 0px 0px 10px #999;
+  box-shadow: 0px 0px 16px #666;
 }
 select {
   text-align: center;
