@@ -17,7 +17,8 @@
           <img :src="m.images.medium" alt="">
           <div class="right">
             <h3 class="m-title">{{m.title}}</h3>
-            <span :class="{'high' : m.rating.average >= 8, 'low':m.rating.average <= 6}">{{m.rating.average | handleNoStar}}</span>
+            <span v-if="m.rating.average !== 0" :class="{'high' : m.rating.average >= 8, 'low':m.rating.average <= 6 }">{{m.rating.average}}</span>
+            <p v-if="mType === 'coming_soon'">上映日期：{{m.mainland_pubdate}}</p>
           </div>
         </a>
       </div>
@@ -46,14 +47,14 @@ export default {
   },
   methods: {
     loadCityList() {
-      this.$http.jsonp('https://api.douban.com/v2/loc/list',{params:{count:48}}).then(function(res) {
+      this.$http.jsonp(`${this.$proxyUrl}/v2/loc/list`,{params:{count:48}}).then(function(res) {
         this.cityList = res.body.locs;
       })
     },
     loadData(cityId,type) {
       this.isOpen = true;
       this.$http.jsonp(
-        'https://api.douban.com/v2/movie/' + type,
+        `${this.$proxyUrl}/v2/movie/${type}`,
         {
           params:{
             city:cityId,
@@ -85,15 +86,6 @@ export default {
     changeType() {
       this.loadData(this.selected, this.mType);
       localStorage.mType = this.mType;
-    }
-  },
-  filters: {
-    handleNoStar(v) {
-      if (v === 0) {
-        return '暂无评分'
-      } else {
-        return v
-      }
     }
   }
 }

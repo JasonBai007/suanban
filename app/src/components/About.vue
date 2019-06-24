@@ -10,21 +10,21 @@
 </template>
 
 <script>
-import 'font-awesome/css/font-awesome.min.css'
-import 'animate.css/animate.min.css'
+import "font-awesome/css/font-awesome.min.css";
+import "animate.css/animate.min.css";
 export default {
-  name: 'about',
-  data () {
-    return {
-    }
+  name: "about",
+  data() {
+    return {};
   }
-}
+};
 </script>
 
 <style scoped>
 .about {
   text-align: center;
   letter-spacing: 0.5rem;
+  margin-top: 30vh;
 }
 .about h1 {
   margin-top: 8rem;
@@ -34,7 +34,7 @@ export default {
 }
 .about i {
   font-size: 4rem;
-  color: #1ABC9C;
+  color: #1abc9c;
   margin-top: 2rem;
 }
 </style>
