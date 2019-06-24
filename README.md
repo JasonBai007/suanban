@@ -1,6 +1,7 @@
 # Suanban
 
-> A vue.js project with douban [api](https://developers.douban.com/wiki/?title=api_v2)
+> A vue.js project with [douban api](https://developers.douban.com/wiki/?title=api_v2)
+& [Douban API Proxy](http://wedn.net/)
 
 ## QR Code
 ![screen](https://github.com/jasonBai007/suanban/raw/master/docs/qrcode.png)
@@ -33,6 +34,12 @@ npm run build --report
 - Animate.CSS
 - Font-awesome
 - Douban API
+
+## Proxy Services
+* https://douban.uieee.com
+* https://douban-api.uieee.com
+* https://douban-api.now.sh
+* https://douban-api.zce.now.sh
 
 ## Notes
 1. 顶部是筛选条，可以筛选城市、类型、日期、是否免费
