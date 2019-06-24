@@ -30,9 +30,9 @@ export default {
     display: flex;
     justify-content: space-around;
     flex-wrap: nowrap;
+    box-shadow: 0px 0px 10px #999;
   }
   .navbar a {
-    display: inline-block;
     padding: 1rem 0;
     text-decoration: none;
     color: #fff;

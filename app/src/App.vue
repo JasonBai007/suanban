@@ -22,5 +22,12 @@ body {
   margin:0;
   padding:0;
 }
-
+header {
+  padding: 1rem 0;
+  box-shadow: 0px 0px 10px #999;
+}
+select {
+  text-align: center;
+  text-align-last: center;
+}
 </style>

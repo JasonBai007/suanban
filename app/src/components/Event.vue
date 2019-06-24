@@ -138,7 +138,6 @@ export default {
 }
 header {
   text-align: center;
-  padding: 1rem 0;
   background: #34495E;
   color: #fff;
   letter-spacing: 1px;
