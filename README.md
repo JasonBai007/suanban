@@ -4,7 +4,7 @@
 & [Douban API Proxy](http://wedn.net/)
 
 ## QR Code
-![screen](https://github.com/jasonBai007/suanban/raw/master/docs/qrcode.png)
+![screen](https://github.com/jasonBai007/suanban/raw/master/qrcode.png)
 ## Build Setup
 
 ``` bash
