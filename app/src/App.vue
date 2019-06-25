@@ -6,31 +6,36 @@
 </template>
 
 <script>
-import Navbar from './components/Navbar'
+import Navbar from "./components/Navbar";
 export default {
-  name: 'app',
+  name: "app",
   data() {
-    return {
-    }
+    return {};
   },
-  components:{ Navbar }
-}
+  components: { Navbar }
+};
 </script>
 
 <style>
 body {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
+}
+#app {
+  max-width: 640px;
+  margin: 0 auto;
 }
 header {
   padding: 10px 0;
   box-shadow: 0px 0px 16px #666;
+  left: 0;
+  right: 0;
 }
 select {
   text-align: center;
   text-align-last: center;
 }
 .m-wrap {
-    margin: 41px 0 45px;
+  margin: 41px 0 45px;
 }
 </style>
