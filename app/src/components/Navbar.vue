@@ -33,14 +33,14 @@ export default {
     box-shadow: 0px 0px 16px #666;
   }
   .navbar a {
-    padding: 1rem 0;
+    padding: 12px 0;
     text-decoration: none;
     color: #fff;
     width: 34%;
     background: #34495E;
     text-align: center;
     letter-spacing: 3px;
-    border-right: 1px solid #546769;
+    border-right: 1px solid #666;
   }
   .navbar a:last-child {
     border-right: none;

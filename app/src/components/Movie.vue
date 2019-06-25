@@ -115,9 +115,6 @@ select {
   -webkit-tap-highlight-color:transparent;
   outline:none；
 }
-.m-wrap {
-  margin: 3.3rem 0;
-}
 .m-wrap div a {
   display: block;
   overflow: hidden;
@@ -129,7 +126,7 @@ select {
 .m-wrap div a img {
   display: inline-block;
   float: left;
-  margin:0 2rem;
+  margin:0 1rem;
   width: 30%;
 }
 .m-wrap div .right {

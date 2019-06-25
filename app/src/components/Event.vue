@@ -159,9 +159,6 @@ select {
 h5 {
   margin:0;
 }
-.m-wrap {
-  margin: 3.3rem 0;
-}
 .m-wrap div a {
   display: block;
   overflow: hidden;
