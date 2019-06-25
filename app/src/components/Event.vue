@@ -41,7 +41,7 @@
             </span><br/>
             <span class="rt"><strong>开始：</strong>{{event.begin_time}}</span><br/>
             <span class="rt"><strong>结束：</strong>{{event.end_time}}</span><br/>
-            <span class="rt"><strong>地点：</strong>{{event.address}}</span><br/>
+            <span class="rt"><strong>地点：</strong><span>{{event.address}}</span></span><br/>
             <span class="rt"><strong>费用：</strong><span  :class="{'free-event': selFee === 'all' && event.fee_str === '免费'}">{{event.fee_str}}</span>
             </span><br/>
             <span class="rt"><strong>参加：</strong>{{event.participant_count}}人</span>
@@ -170,7 +170,7 @@ h5 {
 }
 .m-wrap div a img {
   display: inline-block;
-  float: left;
+  vertical-align: top;
   margin:0 3%;
   width: 30%;
 }

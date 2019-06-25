@@ -14,11 +14,16 @@
     <div class="m-wrap">
       <div v-for="m in arr">
         <a :href="m.alt">
-          <img :src="m.images.medium" alt="">
+          <img :src="m.images.medium" alt>
           <div class="right">
             <h3 class="m-title">{{m.title}}</h3>
-            <span v-if="m.rating.average !== 0" :class="{'high' : m.rating.average >= 8, 'low':m.rating.average <= 6 }">{{m.rating.average}}</span>
-            <p v-if="mType === 'coming_soon'">上映日期：{{m.mainland_pubdate}}</p>
+            <p>
+              豆瓣评分：
+              <span v-if="m.rating.average === 0">-</span>
+              <strong v-if="m.rating.average !== 0">{{m.rating.average}}</strong>
+            </p>
+            <p>上映日期：{{m.mainland_pubdate}}</p>
+            <p>影片类型：{{m.genres | getStr}}</p>
           </div>
         </a>
       </div>
@@ -27,19 +32,19 @@
 </template>
 
 <script>
-import loading from './Loading'
+import loading from "./Loading";
 export default {
-  name: 'movie',
-  components: {loading},
-  data () {
+  name: "movie",
+  components: { loading },
+  data() {
     return {
       isOpen: true,
-      total:0,
-      arr:[],
-      cityList:[],
-      selected:localStorage.city || 108288,
-      mType: localStorage.mType || 'in_theaters'
-    }
+      total: 0,
+      arr: [],
+      cityList: [],
+      selected: localStorage.city || 108288,
+      mType: localStorage.mType || "in_theaters"
+    };
   },
   mounted() {
     this.loadCityList();
@@ -48,33 +53,34 @@ export default {
   methods: {
     // 获取城市列表，目前还是用豆瓣官方的API，代理API容易挂
     loadCityList() {
-      this.$http.jsonp(`https://api.douban.com/v2/loc/list`,{params:{count:48}}).then(function(res) {
-        this.cityList = res.body.locs;
-      })
+      this.$http
+        .jsonp(`https://api.douban.com/v2/loc/list`, { params: { count: 48 } })
+        .then(function(res) {
+          this.cityList = res.body.locs;
+        });
     },
     // 获取电影列表数据，这个只能用代理API了
-    loadData(cityId,type) {
+    loadData(cityId, type) {
       this.isOpen = true;
-      this.$http.jsonp(
-        `${this.$proxyUrl}/v2/movie/${type}`,
-        {
-          params:{
-            city:cityId,
-            count:100
+      this.$http
+        .jsonp(`${this.$proxyUrl}/v2/movie/${type}`, {
+          params: {
+            city: cityId,
+            count: 100
           }
-        }
-      ).then(function (res) {
-        let data = res.body;
-        this.arr = this.handleData( data.subjects, type );
-        this.isOpen = false;
-      })
-    },
-    handleData(data,type) {
-      var filterArr = [];
-      if (type === 'in_theaters') {
-        filterArr = data.sort(function(a,b) {
-          return b.rating.average - a.rating.average
         })
+        .then(function(res) {
+          let data = res.body;
+          this.arr = this.handleData(data.subjects, type);
+          this.isOpen = false;
+        });
+    },
+    handleData(data, type) {
+      var filterArr = [];
+      if (type === "in_theaters") {
+        filterArr = data.sort(function(a, b) {
+          return b.rating.average - a.rating.average;
+        });
       } else {
         filterArr = data;
       }
@@ -89,8 +95,13 @@ export default {
       this.loadData(this.selected, this.mType);
       localStorage.mType = this.mType;
     }
+  },
+  filters: {
+    getStr(arr) {
+      return arr.join("|");
+    }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -99,48 +110,50 @@ export default {
 }
 header {
   text-align: center;
-  background: #34495E;
+  background: #34495e;
   color: #fff;
   letter-spacing: 1px;
   position: fixed;
-  width:100%;
+  width: 100%;
 }
 select {
-  appearance:none;
-  -webkit-appearance:none;
+  appearance: none;
+  -webkit-appearance: none;
   -webkit-appearance: none;
   background: none;
   border: none;
   color: #fff;
   font-size: 16px;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  -webkit-tap-highlight-color:transparent;
-  outline:none；
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  outline: none；;
 }
 .m-wrap div a {
-  display: block;
+  display: flex;
+  align-items: center;
   overflow: hidden;
   padding: 1rem 1rem 1rem 0;
   text-decoration: none;
-  border-bottom: 1px solid #BDC3C7;
-  background: #ECF0F1;
+  border-bottom: 1px solid #bdc3c7;
+  background: #ecf0f1;
 }
 .m-wrap div a img {
-  display: inline-block;
-  float: left;
-  margin:0 1rem;
-  width: 30%;
+  margin: 0 1rem;
+  width: 34%;
 }
 .m-wrap div .right {
-  color: #2C3E50;
+  color: #2c3e50;
+  text-align: center;
+  flex-grow: 1;
 }
-.high {
-  color:#FF4949;
+h3 {
+  margin-top: -10px;
+  font-size: 16px;
 }
-.low {
-  color: #13CE66;
-}
-.right span {
-  font-size: 1.4rem;
+p {
+  font-size: 14px;
+  margin: 2px 0;
+  text-align: left;
+  padding-left: 12%;
 }
 </style>
