@@ -46,11 +46,13 @@ export default {
     this.loadData(this.selected, this.mType);
   },
   methods: {
+    // 获取城市列表，目前还是用豆瓣官方的API，代理API容易挂
     loadCityList() {
-      this.$http.jsonp(`${this.$proxyUrl}/v2/loc/list`,{params:{count:48}}).then(function(res) {
+      this.$http.jsonp(`https://api.douban.com/v2/loc/list`,{params:{count:48}}).then(function(res) {
         this.cityList = res.body.locs;
       })
     },
+    // 获取电影列表数据，这个只能用代理API了
     loadData(cityId,type) {
       this.isOpen = true;
       this.$http.jsonp(

@@ -4,7 +4,8 @@ import router from './router'
 import VueResource from 'vue-resource'
 
 Vue.use(VueResource);
-Vue.prototype.$proxyUrl = 'https://douban.uieee.com'
+// Vue.prototype.$proxyUrl = 'https://douban.uieee.com'
+Vue.prototype.$proxyUrl = 'https://douban-api.uieee.com'
 
 Vue.config.productionTip = false
 
