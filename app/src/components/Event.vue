@@ -75,7 +75,7 @@ export default {
   },
   methods: {
     loadCityList() {
-      this.$http.jsonp('https://api.douban.com/v2/loc/list',{params:{count:48}}).then(function(res) {
+      this.$http.jsonp('https://api.douban.com/v2/loc/list',{params:{count:100}}).then(function(res) {
         this.cityList = res.body.locs;
       })
     },
@@ -85,7 +85,7 @@ export default {
         'https://api.douban.com/v2/event/list',
         {
           params:{
-            count:60,
+            count:100,
             loc:cityId,
             day_type:day_type,
             type: type

@@ -54,7 +54,7 @@ export default {
     // 获取城市列表，目前还是用豆瓣官方的API，代理API容易挂
     loadCityList() {
       this.$http
-        .jsonp(`https://api.douban.com/v2/loc/list`, { params: { count: 48 } })
+        .jsonp(`https://api.douban.com/v2/loc/list`, { params: { count: 100 } })
         .then(function(res) {
           this.cityList = res.body.locs;
         });
