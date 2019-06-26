@@ -33,10 +33,12 @@ export default {
   justify-content: center;
 }
 .wrap {
-  margin-top: -50px;
+  margin-top: -60px;
 }
 .about h1 {
+  color:#34495E;
   margin-top: 0;
+  margin-right: -4px;
 }
 .about h2 {
   margin: 0.5rem 0;

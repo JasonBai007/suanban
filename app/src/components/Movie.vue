@@ -22,8 +22,8 @@
               <span v-if="m.rating.average === 0">-</span>
               <strong v-if="m.rating.average !== 0">{{m.rating.average}}</strong>
             </p>
-            <p>上映日期：{{m.mainland_pubdate}}</p>
             <p>影片类型：{{m.genres | getStr}}</p>
+            <p>上映日期：{{m.mainland_pubdate}}</p>
           </div>
         </a>
       </div>
@@ -71,22 +71,22 @@ export default {
         })
         .then(function(res) {
           let data = res.body;
-          this.arr = this.handleData(data.subjects, type);
+          this.arr = data.subjects
+          this.total = data.subjects.length;
           this.isOpen = false;
         });
     },
-    handleData(data, type) {
-      var filterArr = [];
-      if (type === "in_theaters") {
-        filterArr = data.sort(function(a, b) {
-          return b.rating.average - a.rating.average;
-        });
-      } else {
-        filterArr = data;
-      }
-      this.total = filterArr.length;
-      return filterArr;
-    },
+    // handleData(data, type) {
+    //   var filterArr = [];
+    //   if (type === "in_theaters") {
+    //     filterArr = data.sort(function(a, b) {
+    //       return b.rating.average - a.rating.average;
+    //     });
+    //   } else {
+    //     filterArr = data;
+    //   }
+    //   return filterArr;
+    // },
     changeCity() {
       this.loadData(this.selected, this.mType);
       localStorage.city = this.selected;
@@ -154,6 +154,6 @@ p {
   font-size: 14px;
   margin: 2px 0;
   text-align: left;
-  padding-left: 12%;
+  padding-left: 10%;
 }
 </style>
